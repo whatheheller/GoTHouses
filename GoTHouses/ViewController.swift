@@ -20,6 +20,14 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            let destination = segue.destination as! DetailViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.houseInfo = houses.houseArray[selectedIndexPath.row]
+        }
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
